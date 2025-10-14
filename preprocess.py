@@ -6,23 +6,6 @@ def preprocess_pointcloud(
     remove_outliers: bool = True,
     estimate_normals: bool = True
 ) -> o3d.geometry.PointCloud:
-    """
-    Preprocess a point cloud for AI-ready pipelines.
-
-    Steps:
-      1. Downsample using voxel grid
-      2. Optionally remove statistical outliers
-      3. Optionally estimate surface normals
-
-    Args:
-        pcd: Input Open3D point cloud
-        voxel_size: Size of voxel grid for downsampling (in meters)
-        remove_outliers: Whether to apply statistical outlier removal
-        estimate_normals: Whether to estimate normals for each point
-
-    Returns:
-        Cleaned and optionally downsampled Open3D PointCloud
-    """
     print(f"[INFO] Preprocessing point cloud ({len(pcd.points)} points)...")
 
     # Downsample for uniform density
