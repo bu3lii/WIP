@@ -6,7 +6,7 @@ import pye57
 import argparse
 
 def load_pointCloud(path: str, downsample: float = None) -> o3d.geometry.PointCloud:
-    ext = os.path.splitext(path[1]).lower()
+    ext = os.path.splitext(path)[1].lower()
     print(f" Loading Point Cloud: {path}")
 
     if ext in [".ply",".pcd"]:
