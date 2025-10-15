@@ -6,7 +6,7 @@ def preprocess_pointcloud(
     remove_outliers: bool = True,
     estimate_normals: bool = True
 ) -> o3d.geometry.PointCloud:
-    print(f"[INFO] Preprocessing point cloud ({len(pcd.points)} points)...")
+    print(f"Preprocessing point cloud ({len(pcd.points)} points)...")
 
     # Downsample for uniform density
     if voxel_size:
@@ -15,17 +15,17 @@ def preprocess_pointcloud(
 
     # Remove isolated noise points
     if remove_outliers:
-        print("[INFO] Removing statistical outliers...")
+        print("Removing statistical outliers...")
         pcd, ind = pcd.remove_statistical_outlier(nb_neighbors=20, std_ratio=2.0)
-        print(f"[INFO] Retained {len(pcd.points)} points after noise removal.")
+        print(f"Retained {len(pcd.points)} points after noise removal.")
 
     # Estimate normals for geometric features
     if estimate_normals:
-        print("[INFO] Estimating normals...")
+        print("Estimating normals...")
         pcd.estimate_normals(
             search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=0.05, max_nn=30)
         )
         pcd.normalize_normals()
 
-    print(f"[INFO] Preprocessing complete: {len(pcd.points)} points ready.")
+    print(f"Preprocessing complete: {len(pcd.points)} points ready.")
     return pcd
